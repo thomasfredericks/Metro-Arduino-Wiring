@@ -1,3 +1,7 @@
+/*
+For license and instructions, please read Readme.md.
+*/
+
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
