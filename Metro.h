@@ -1,4 +1,6 @@
-
+/*
+ For license and instructions, please read Readme.md.
+ */
 
 #ifndef Metro_h
 #define Metro_h
