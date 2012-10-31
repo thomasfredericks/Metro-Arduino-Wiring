@@ -25,7 +25,7 @@ Metro::Metro(unsigned long interval_millis)
 
 Metro::Metro(unsigned long interval_millis, uint8_t autoreset)
 {   
-	this->autoreset = autoreset; 
+	this->autoreset = autoreset;
 	interval(interval_millis);
 	reset();
 }
@@ -33,6 +33,14 @@ Metro::Metro(unsigned long interval_millis, uint8_t autoreset)
 void Metro::interval(unsigned long interval_millis)
 {
   this->interval_millis = interval_millis;
+}
+
+void Metro::delay(unsigned long delay_millis) {
+    this->previous_millis += delay_millis;
+}
+
+void Metro::delayFromNow(unsigned long delay_millis) {
+    this->previous_millis = millis()+delay_millis;
 }
 
 // Benjamin.soelberg's check behavior:
@@ -45,7 +53,9 @@ void Metro::interval(unsigned long interval_millis)
 
 char Metro::check()
 {
-  if (millis() - this->previous_millis >= this->interval_millis) {
+  unsigned long now_millis = millis();
+  if (this->previous_millis<now_millis
+      &&(now_millis - this->previous_millis >= this->interval_millis)) {
     // As suggested by benjamin.soelberg@gmail.com, the following line 
     // this->previous_millis = millis();
     // was changed to
@@ -53,7 +63,7 @@ char Metro::check()
     
     // If the interval is set to 0 we revert to the original behavior
     if (this->interval_millis <= 0 || this->autoreset ) {
-    	this->previous_millis = millis();
+    	this->previous_millis = now_millis;
 	} else {
 		this->previous_millis += this->interval_millis; 
 	}

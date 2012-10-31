@@ -58,3 +58,11 @@ Changes the interval in milliseconds.
 
 Restarts/resets the Metro.
 
+# void delay(long millis)
+
+delays the triggering of the next successful check() for the specified amount of milliseconds. 
+
+# void delayFromNow(long millis)
+
+delays the triggering of the next successful check() for the specified amount of milliseconds after now.
+After millis() + the specified milliseconds the Metro goes back to normal operation 
