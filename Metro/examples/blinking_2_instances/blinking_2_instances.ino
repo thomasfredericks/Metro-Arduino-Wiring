@@ -11,7 +11,7 @@ int state0 = HIGH;
 int state1 = HIGH;
 
 // Instantiate a metro object and set the interval to 250 milliseconds (0.25 seconds).
-Metro metro0 = Metro(500); 
+Metro metro0 = Metro(250); 
 
 // Instantiate another metro object and set the interval to 125 milliseconds (0.125 seconds).
 Metro metro1 = Metro(125); 
