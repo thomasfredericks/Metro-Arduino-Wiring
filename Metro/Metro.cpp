@@ -39,7 +39,7 @@ uint8_t Metro::check()
   }
  
   if ( (now - previous_millis) >= interval_millis) {
-	#ifdef NOCATCH-UP
+	#ifdef NOCATCH_UP
 	previous_millis = now ; 
 	#else
 	previous_millis += interval_millis ; 
